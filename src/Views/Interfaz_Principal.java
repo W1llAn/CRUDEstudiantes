@@ -208,9 +208,9 @@ public class Interfaz_Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbtnCrearUsuario;
-    private javax.swing.JButton jbtnEditarUsuario;
-    private javax.swing.JButton jbtnEliminarUsuario;
-    private javax.swing.JTable jtblEstudiantes;
+    public javax.swing.JButton jbtnCrearUsuario;
+    public javax.swing.JButton jbtnEditarUsuario;
+    public javax.swing.JButton jbtnEliminarUsuario;
+    public javax.swing.JTable jtblEstudiantes;
     // End of variables declaration//GEN-END:variables
 }
