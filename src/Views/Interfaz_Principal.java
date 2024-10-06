@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista;
+package Views;
+
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,6 +18,10 @@ public class Interfaz_Principal extends javax.swing.JFrame {
      */
     public Interfaz_Principal() {
         initComponents();
+        ImageIcon iconoOriginal = new ImageIcon("src\\imagenes\\lupa.png");
+        Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(this.jbtnBuscarEstudiante.getWidth(), this.jbtnBuscarEstudiante.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+        this.jbtnBuscarEstudiante.setIcon(iconoEscalado);
     }
 
     /**
@@ -30,12 +37,16 @@ public class Interfaz_Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtblEstudiantes = new javax.swing.JTable();
         jbtnCrearUsuario = new javax.swing.JButton();
         jbtnEditarUsuario = new javax.swing.JButton();
         jbtnEliminarUsuario = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jScpConetedorTabla = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtblEstudiantes = new javax.swing.JTable();
+        textField1 = new java.awt.TextField();
+        jLabel4 = new javax.swing.JLabel();
+        jbtnBuscarEstudiante = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -52,26 +63,9 @@ public class Interfaz_Principal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("CRUD BASICO EN JAVA ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 310, 50));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 310, 50));
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 70));
-
-        jtblEstudiantes.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jtblEstudiantes.setForeground(new java.awt.Color(153, 153, 153));
-        jtblEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Cedula", "Nombre", "Apellido", "Direecion", "Telefono"
-            }
-        ));
-        jScrollPane1.setViewportView(jtblEstudiantes);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 460, 150));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 70));
 
         jbtnCrearUsuario.setBackground(new java.awt.Color(204, 204, 204));
         jbtnCrearUsuario.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -110,7 +104,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
                 jbtnEditarUsuarioActionPerformed(evt);
             }
         });
-        jPanel2.add(jbtnEditarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 140, -1));
+        jPanel2.add(jbtnEditarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 140, -1));
 
         jbtnEliminarUsuario.setBackground(new java.awt.Color(204, 204, 204));
         jbtnEliminarUsuario.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -127,14 +121,53 @@ public class Interfaz_Principal extends javax.swing.JFrame {
                 jbtnEliminarUsuarioMouseExited(evt);
             }
         });
-        jPanel2.add(jbtnEliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 140, -1));
+        jPanel2.add(jbtnEliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 140, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("ESTUDIANTES");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 180, 40));
+        jLabel3.setText("Cedula");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 80, 20));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 467));
+        jtblEstudiantes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jtblEstudiantes.setForeground(new java.awt.Color(0, 0, 0));
+        jtblEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cedula", "Nombre", "Apellido", "Direecion", "Telefono"
+            }
+        ));
+        jScrollPane1.setViewportView(jtblEstudiantes);
+
+        jScpConetedorTabla.setViewportView(jScrollPane1);
+
+        jPanel2.add(jScpConetedorTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 690, 210));
+        jPanel2.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 220, 30));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("ESTUDIANTES");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 180, 40));
+
+        jbtnBuscarEstudiante.setBackground(new java.awt.Color(255, 255, 255));
+        jbtnBuscarEstudiante.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jbtnBuscarEstudiante.setForeground(new java.awt.Color(0, 0, 0));
+        jbtnBuscarEstudiante.setToolTipText("");
+        jbtnBuscarEstudiante.setBorderPainted(false);
+        jbtnBuscarEstudiante.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jbtnBuscarEstudianteMouseMoved(evt);
+            }
+        });
+        jbtnBuscarEstudiante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jbtnBuscarEstudianteMouseExited(evt);
+            }
+        });
+        jPanel2.add(jbtnBuscarEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 40, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 467));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -165,6 +198,14 @@ public class Interfaz_Principal extends javax.swing.JFrame {
 
     private void jbtnEliminarUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnEliminarUsuarioMouseExited
         jbtnEliminarUsuario.setBackground(new java.awt.Color(204, 204, 204));    }//GEN-LAST:event_jbtnEliminarUsuarioMouseExited
+
+    private void jbtnBuscarEstudianteMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnBuscarEstudianteMouseMoved
+       this.jbtnBuscarEstudiante.setBackground(new java.awt.Color(175, 238, 238));
+    }//GEN-LAST:event_jbtnBuscarEstudianteMouseMoved
+
+    private void jbtnBuscarEstudianteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnBuscarEstudianteMouseExited
+        this.jbtnBuscarEstudiante.setBackground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_jbtnBuscarEstudianteMouseExited
 
     /**
      * @param args the command line arguments
@@ -205,12 +246,16 @@ public class Interfaz_Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScpConetedorTabla;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbtnCrearUsuario;
-    private javax.swing.JButton jbtnEditarUsuario;
-    private javax.swing.JButton jbtnEliminarUsuario;
-    private javax.swing.JTable jtblEstudiantes;
+    public javax.swing.JButton jbtnBuscarEstudiante;
+    public javax.swing.JButton jbtnCrearUsuario;
+    public javax.swing.JButton jbtnEditarUsuario;
+    public javax.swing.JButton jbtnEliminarUsuario;
+    public javax.swing.JTable jtblEstudiantes;
+    private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
 }
