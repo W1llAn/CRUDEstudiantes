@@ -4,9 +4,12 @@
  */
 package Controllers;
 
+import Models.Estudiante;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Views.Interfaz_Principal;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author William
@@ -20,7 +23,17 @@ public class ControlerInterfaz implements ActionListener{
         vista.jbtnCrearUsuario.addActionListener(this);
         vista.jbtnEditarUsuario.addActionListener(this);
         vista.jbtnEliminarUsuario.addActionListener(this);
+        this.llenarTabla();
     }
+    private void llenarTabla(){
+        ArrayList<Estudiante> estudiantes = this.api.obtenerEstudiantes("http://localhost:8080/SOA/models/acceder.php");
+        DefaultTableModel modeloTable = (DefaultTableModel) this.vista.jtblEstudiantes.getModel();
+        for (Estudiante estudiante : estudiantes) {
+            modeloTable.addRow(new Object[]{estudiante.getCedula(), estudiante.getNombre(),estudiante.getApellido(),estudiante.getDireccion(),estudiante.getNumeroCelular()});
+        }
+        this.vista.jtblEstudiantes.setModel(modeloTable);
+    }
+    
     
     @Override
     public void actionPerformed(ActionEvent e) {

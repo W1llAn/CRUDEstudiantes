@@ -19,8 +19,10 @@ import org.json.JSONObject;
  */
 public class ApiRest {
     
+    
+    
     public  ArrayList<Estudiante> obtenerEstudiantes(String urlServicio) {
-        ArrayList<Estudiante> estudiantes = null;
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
         try {
             // Crear conexión
             URL url = new URL(urlServicio);
@@ -43,14 +45,13 @@ public class ApiRest {
 
             // Cerrar la conexión
             conexion.disconnect();
-
             // Leer el resultado JSON y convertirlo en un Array de estudiantes
             JSONArray listaEstudiantes = new JSONArray(resultado.toString());
             for (int i = 0; i < listaEstudiantes.length(); i++) {
                 JSONObject estudiante = listaEstudiantes.getJSONObject(i);
                 estudiantes.add(new Estudiante(estudiante.getString("cedula"),
                                                                      estudiante.getString("nombre"),
-                                                                    estudiante.getString("apelllido"),
+                                                                    estudiante.getString("apellido"),
                                                                     estudiante.getString("direccion"),
                                                                     estudiante.getString("telefono")));
             }
