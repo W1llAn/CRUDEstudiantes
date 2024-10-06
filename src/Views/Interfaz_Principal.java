@@ -21,6 +21,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
         ImageIcon iconoOriginal = new ImageIcon("src\\imagenes\\lupa.png");
         Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(this.jbtnBuscarEstudiante.getWidth(), this.jbtnBuscarEstudiante.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+        this.setLocationRelativeTo(null);
         this.jbtnBuscarEstudiante.setIcon(iconoEscalado);
     }
 

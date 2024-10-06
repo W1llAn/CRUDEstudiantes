@@ -87,10 +87,10 @@ public class ApiRest {
                 os.write(input, 0, input.length);
             }
 
-            // Verificar el código de respuesta
+            // Verificar el código de respuesta (aceptamos tanto 200 como 201)
             int codigoRespuesta = conexion.getResponseCode();
-            if (codigoRespuesta == HttpURLConnection.HTTP_CREATED) {
-                // Usuario creado exitosamente (asumimos que el código 201 indica éxito)
+            if (codigoRespuesta == HttpURLConnection.HTTP_CREATED || codigoRespuesta == HttpURLConnection.HTTP_OK) {
+                // Usuario creado exitosamente (200 o 201)
                 return true;
             } else {
                 // Manejar errores si es necesario
@@ -103,4 +103,5 @@ public class ApiRest {
             return false;
         }
     }
+
 }
