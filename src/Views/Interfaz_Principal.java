@@ -121,7 +121,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
                 jbtnEliminarUsuarioMouseExited(evt);
             }
         });
-        jPanel2.add(jbtnEliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, 140, -1));
+        jPanel2.add(jbtnEliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 140, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));

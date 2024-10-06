@@ -26,7 +26,7 @@ public class ControlerInterfaz implements ActionListener{
         this.llenarTabla();
     }
     private void llenarTabla(){
-        ArrayList<Estudiante> estudiantes = this.api.obtenerEstudiantes("http://localhost:8080/SOA/models/acceder.php");
+        ArrayList<Estudiante> estudiantes = this.api.obtenerEstudiantes("http://localhost:8080/SOA/controllers/apiRest.php");
         DefaultTableModel modeloTable = (DefaultTableModel) this.vista.jtblEstudiantes.getModel();
         for (Estudiante estudiante : estudiantes) {
             modeloTable.addRow(new Object[]{estudiante.getCedula(), estudiante.getNombre(),estudiante.getApellido(),estudiante.getDireccion(),estudiante.getNumeroCelular()});
