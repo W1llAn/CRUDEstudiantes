@@ -71,7 +71,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jtblEstudiantes);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, 150));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 460, 150));
 
         jbtnCrearUsuario.setBackground(new java.awt.Color(204, 204, 204));
         jbtnCrearUsuario.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -88,7 +88,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
                 jbtnCrearUsuarioMouseExited(evt);
             }
         });
-        jPanel2.add(jbtnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 110, -1));
+        jPanel2.add(jbtnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 140, -1));
 
         jbtnEditarUsuario.setBackground(new java.awt.Color(204, 204, 204));
         jbtnEditarUsuario.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -110,7 +110,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
                 jbtnEditarUsuarioActionPerformed(evt);
             }
         });
-        jPanel2.add(jbtnEditarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 110, -1));
+        jPanel2.add(jbtnEditarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 140, -1));
 
         jbtnEliminarUsuario.setBackground(new java.awt.Color(204, 204, 204));
         jbtnEliminarUsuario.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -127,7 +127,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
                 jbtnEliminarUsuarioMouseExited(evt);
             }
         });
-        jPanel2.add(jbtnEliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 420, 140, -1));
+        jPanel2.add(jbtnEliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 140, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -144,7 +144,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnEditarUsuarioActionPerformed
 
     private void jbtnCrearUsuarioMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnCrearUsuarioMouseMoved
-        jbtnCrearUsuario.setBackground(new java.awt.Color(175, 238, 238));
+        jbtnCrearUsuario.setBackground(new java.awt.Color(0, 250, 0));
     }//GEN-LAST:event_jbtnCrearUsuarioMouseMoved
 
     private void jbtnCrearUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnCrearUsuarioMouseExited
