@@ -38,9 +38,9 @@ public class Interfaz_Editar extends javax.swing.JFrame {
         jTxfApellido = new javax.swing.JTextField();
         jTxfDireccion = new javax.swing.JTextField();
         jTxfTelefono = new javax.swing.JTextField();
-        jLblCedula = new javax.swing.JLabel();
         jBtnCancelar = new javax.swing.JButton();
         jBtnGuardar = new javax.swing.JButton();
+        jTxfCedula = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -129,9 +129,6 @@ public class Interfaz_Editar extends javax.swing.JFrame {
             }
         });
 
-        jLblCedula.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLblCedula.setForeground(new java.awt.Color(0, 0, 0));
-
         jBtnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         jBtnCancelar.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         jBtnCancelar.setForeground(new java.awt.Color(0, 0, 0));
@@ -141,6 +138,16 @@ public class Interfaz_Editar extends javax.swing.JFrame {
         jBtnGuardar.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
         jBtnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         jBtnGuardar.setText("Guardar");
+
+        jTxfCedula.setBackground(new java.awt.Color(255, 255, 255));
+        jTxfCedula.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jTxfCedula.setForeground(new java.awt.Color(0, 0, 0));
+        jTxfCedula.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTxfCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxfCedulaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -161,16 +168,15 @@ public class Interfaz_Editar extends javax.swing.JFrame {
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(34, 34, 34)
+                                        .addComponent(jTxfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jTxfApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTxfNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(34, 34, 34)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTxfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLblCedula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(jTxfNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTxfCedula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -183,10 +189,10 @@ public class Interfaz_Editar extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLblCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxfCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -232,6 +238,10 @@ public class Interfaz_Editar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxfTelefonoActionPerformed
 
+    private void jTxfCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxfCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxfCedulaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -276,13 +286,12 @@ public class Interfaz_Editar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    public javax.swing.JLabel jLblCedula;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTxfApellido;
-    private javax.swing.JTextField jTxfDireccion;
-    private javax.swing.JTextField jTxfNombre;
-    private javax.swing.JTextField jTxfTelefono;
+    public javax.swing.JTextField jTxfApellido;
+    public javax.swing.JTextField jTxfCedula;
+    public javax.swing.JTextField jTxfDireccion;
+    public javax.swing.JTextField jTxfNombre;
+    public javax.swing.JTextField jTxfTelefono;
     // End of variables declaration//GEN-END:variables
 }

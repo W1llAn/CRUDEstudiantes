@@ -46,9 +46,14 @@ public class ControlerInterfaz implements ActionListener {
     }
 
     private void editarAlumno(int indice) {
-        ArrayList<Estudiante> estudiantes = this.api.obtenerEstudiantes("http://localhost:8087/SOA/controllers/apiRest.php");
-        String cedula = estudiantes.get(indice).getCedula();
-        this.editar.jLblCedula.setText(cedula);
+        String urlServicio = "http://localhost:8087/SOA/controllers/apiRest.php";
+        ArrayList<Estudiante> estudiantes = this.api.obtenerEstudiantes(urlServicio);
+        Estudiante estudiante = estudiantes.get(indice);
+        this.editar.jTxfCedula.setText(estudiante.getCedula());
+        this.editar.jTxfNombre.setText(estudiante.getNombre());
+        this.editar.jTxfApellido.setText(estudiante.getApellido());
+        this.editar.jTxfDireccion.setText(estudiante.getDireccion());
+        this.editar.jTxfTelefono.setText(estudiante.getNumeroCelular());
     }
 
     @Override
@@ -60,10 +65,11 @@ public class ControlerInterfaz implements ActionListener {
         if (e.getSource() == vista.jbtnEditarUsuario) {
             if (this.vista.jtblEstudiantes.getSelectedRow() != -1) {
                 this.editar.setVisible(true);
+                this.editar.jTxfCedula.setEnabled(false);
                 int indice = this.vista.jtblEstudiantes.getSelectedRow();
                 editarAlumno(indice);
-            }else{
-            JOptionPane.showMessageDialog(null, "Seleccione al usuario a editar ");
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione al usuario a editar ");
             }
 
         }
@@ -76,7 +82,24 @@ public class ControlerInterfaz implements ActionListener {
             this.editar.dispose();
         }
         if (e.getSource() == editar.jBtnGuardar) {
-          
+            DefaultTableModel modeloTable = (DefaultTableModel) this.vista.jtblEstudiantes.getModel();
+            String urlServicio = "http://localhost:8087/SOA/controllers/apiRest.php";
+            Estudiante estudiante = new Estudiante();
+            estudiante.setCedula(this.editar.jTxfCedula.getText());
+            estudiante.setNombre(this.editar.jTxfNombre.getText());
+            estudiante.setApellido(this.editar.jTxfApellido.getText());
+            estudiante.setDireccion(this.editar.jTxfDireccion.getText());
+            estudiante.setNumeroCelular(this.editar.jTxfTelefono.getText());
+            boolean respuesta = this.api.editarEstudiante(estudiante, urlServicio);
+            if (respuesta) {
+                JOptionPane.showMessageDialog(null, "Datos guardados exitosamente.", "Exito",
+                    JOptionPane.INFORMATION_MESSAGE);
+                this.editar.dispose();
+                modeloTable.setRowCount(0);
+                this.llenarTabla();
+            } else {
+                JOptionPane.showMessageDialog(null, "Falló al guardar los datos.");
+            }
         }
     }
 
