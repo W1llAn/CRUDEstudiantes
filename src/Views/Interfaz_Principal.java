@@ -22,6 +22,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
         Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(this.jbtnBuscarEstudiante.getWidth(), this.jbtnBuscarEstudiante.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
         this.jbtnBuscarEstudiante.setIcon(iconoEscalado);
+        this.jbtnEliminarUsuario.setEnabled(false);
     }
 
     /**
@@ -138,6 +139,11 @@ public class Interfaz_Principal extends javax.swing.JFrame {
                 "Cedula", "Nombre", "Apellido", "Direecion", "Telefono"
             }
         ));
+        jtblEstudiantes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtblEstudiantesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtblEstudiantes);
 
         jScpConetedorTabla.setViewportView(jScrollPane1);
@@ -206,6 +212,10 @@ public class Interfaz_Principal extends javax.swing.JFrame {
     private void jbtnBuscarEstudianteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbtnBuscarEstudianteMouseExited
         this.jbtnBuscarEstudiante.setBackground(new java.awt.Color(255, 255, 255));
     }//GEN-LAST:event_jbtnBuscarEstudianteMouseExited
+
+    private void jtblEstudiantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtblEstudiantesMouseClicked
+        this.jbtnEliminarUsuario.setEnabled(true);
+    }//GEN-LAST:event_jtblEstudiantesMouseClicked
 
     /**
      * @param args the command line arguments

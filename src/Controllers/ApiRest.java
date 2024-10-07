@@ -61,4 +61,25 @@ public class ApiRest {
         }
         return estudiantes;
     }
+    
+    public boolean eliminarEstudiante(String urlServicio, String cedula) {
+        try {
+            // Crear conexión para DELETE
+            URL url = new URL(urlServicio + "?cedula=" + cedula); // Suponiendo que pasas la cédula por query string
+            HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
+            conexion.setRequestMethod("DELETE");
+            conexion.setRequestProperty("Accept", "application/json");
+
+            // Verificar el código de respuesta
+            if (conexion.getResponseCode() == 200) {
+                return true; // Eliminación exitosa
+            } else {
+                throw new RuntimeException("Error: Código HTTP " + conexion.getResponseCode());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
