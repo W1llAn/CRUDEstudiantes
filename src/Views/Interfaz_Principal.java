@@ -44,7 +44,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
         jScpConetedorTabla = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtblEstudiantes = new javax.swing.JTable();
-        textField1 = new java.awt.TextField();
+        textCedula = new java.awt.TextField();
         jLabel4 = new javax.swing.JLabel();
         jbtnBuscarEstudiante = new javax.swing.JButton();
 
@@ -143,7 +143,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
         jScpConetedorTabla.setViewportView(jScrollPane1);
 
         jPanel2.add(jScpConetedorTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 690, 210));
-        jPanel2.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 220, 30));
+        jPanel2.add(textCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 220, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -256,6 +256,6 @@ public class Interfaz_Principal extends javax.swing.JFrame {
     public javax.swing.JButton jbtnEditarUsuario;
     public javax.swing.JButton jbtnEliminarUsuario;
     public javax.swing.JTable jtblEstudiantes;
-    private java.awt.TextField textField1;
+    public java.awt.TextField textCedula;
     // End of variables declaration//GEN-END:variables
 }
