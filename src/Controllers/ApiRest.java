@@ -7,8 +7,11 @@ package Controllers;
 import Models.Estudiante;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,10 +21,8 @@ import org.json.JSONObject;
  * @author William
  */
 public class ApiRest {
-    
-    
-    
-    public  ArrayList<Estudiante> obtenerEstudiantes(String urlServicio) {
+
+    public ArrayList<Estudiante> obtenerEstudiantes(String urlServicio) {
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
         try {
             // Crear conexión
@@ -50,10 +51,10 @@ public class ApiRest {
             for (int i = 0; i < listaEstudiantes.length(); i++) {
                 JSONObject estudiante = listaEstudiantes.getJSONObject(i);
                 estudiantes.add(new Estudiante(estudiante.getString("cedula"),
-                                                                     estudiante.getString("nombre"),
-                                                                    estudiante.getString("apellido"),
-                                                                    estudiante.getString("direccion"),
-                                                                    estudiante.getString("telefono")));
+                        estudiante.getString("nombre"),
+                        estudiante.getString("apellido"),
+                        estudiante.getString("direccion"),
+                        estudiante.getString("telefono")));
             }
 
         } catch (Exception e) {
@@ -61,4 +62,57 @@ public class ApiRest {
         }
         return estudiantes;
     }
+
+    public boolean editarEstudiante(Estudiante estudiante, String urlServicio) {
+        try {
+            // Agregar la cédula del estudiante a la URL
+            URL url = new URL(urlServicio + "?cedula=" + estudiante.getCedula());
+            HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
+            conexion.setDoOutput(true);  // Permitir datos en la solicitud
+            conexion.setRequestMethod("PUT");  // Método PUT para actualización
+            conexion.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conexion.setRequestProperty("Accept", "application/json");
+
+            // Crear los datos de formulario que vamos a enviar
+            String urlParameters = "nombre=" + URLEncoder.encode(estudiante.getNombre(), "UTF-8")
+                    + "&apellido=" + URLEncoder.encode(estudiante.getApellido(), "UTF-8")
+                    + "&direccion=" + URLEncoder.encode(estudiante.getDireccion(), "UTF-8")
+                    + "&telefono=" + URLEncoder.encode(estudiante.getNumeroCelular(), "UTF-8");
+
+            // Enviar los datos
+            OutputStream os = conexion.getOutputStream();
+            os.write(urlParameters.getBytes(StandardCharsets.UTF_8));
+            os.flush();
+            os.close();
+
+            // Verificar el código de respuesta
+            int responseCode = conexion.getResponseCode();
+            if (responseCode != HttpURLConnection.HTTP_OK) {
+                throw new RuntimeException("Error: Código HTTP " + responseCode);
+            }
+
+            // Leer la respuesta del servidor
+            BufferedReader in = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
+            String inputLine;
+            StringBuilder respuesta = new StringBuilder();
+
+            while ((inputLine = in.readLine()) != null) {
+                respuesta.append(inputLine);
+            }
+            in.close();
+
+            // Imprimir la respuesta
+            //System.out.println("Respuesta del servidor: " + respuesta.toString());
+            
+            // Cerramos la conexión
+            conexion.disconnect();
+
+            return true; // Éxito
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false; // Error en la actualización
+        }
+    }
+
 }
