@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -63,6 +64,45 @@ public class ApiRest {
         return estudiantes;
     }
 
+    public boolean crearUsuario(String urlServicio, Estudiante estudiante) {
+        try {
+            // Crear conexión
+            URL url = new URL(urlServicio);
+            HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
+            conexion.setRequestMethod("POST");
+            conexion.setRequestProperty("Content-Type", "application/json; utf-8");
+            conexion.setRequestProperty("Accept", "application/json");
+            conexion.setDoOutput(true); // Permitir enviar datos en la solicitud
+
+            // Crear JSON con los datos del estudiante
+            String jsonInputString = new JSONObject()
+                    .put("cedula", estudiante.getCedula())
+                    .put("nombre", estudiante.getNombre())
+                    .put("apellido", estudiante.getApellido())
+                    .put("direccion", estudiante.getDireccion())
+                    .put("telefono", estudiante.getNumeroCelular())
+                    .toString();
+
+            // Enviar el JSON a la API
+            try (OutputStream os = conexion.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
+
+            // Verificar el código de respuesta (aceptamos tanto 200 como 201)
+            int codigoRespuesta = conexion.getResponseCode();
+            if (codigoRespuesta == HttpURLConnection.HTTP_CREATED || codigoRespuesta == HttpURLConnection.HTTP_OK) {
+                // Usuario creado exitosamente (200 o 201)
+                return true;
+            } else {
+                // Manejar errores si es necesario
+                System.out.println("Error: Código HTTP " + codigoRespuesta);
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
     public boolean editarEstudiante(Estudiante estudiante, String urlServicio) {
         try {
             // Agregar la cédula del estudiante a la URL

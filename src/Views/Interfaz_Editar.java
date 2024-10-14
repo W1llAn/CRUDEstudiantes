@@ -4,6 +4,8 @@
  */
 package Views;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author ASUS
@@ -15,6 +17,8 @@ public class Interfaz_Editar extends javax.swing.JFrame {
      */
     public Interfaz_Editar() {
         initComponents();
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -70,28 +74,21 @@ public class Interfaz_Editar extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Cédula:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nombre:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Apellido:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Dirección:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Teléfono:");
 
-        jTxfNombre.setBackground(new java.awt.Color(255, 255, 255));
         jTxfNombre.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jTxfNombre.setForeground(new java.awt.Color(0, 0, 0));
         jTxfNombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTxfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,9 +96,7 @@ public class Interfaz_Editar extends javax.swing.JFrame {
             }
         });
 
-        jTxfApellido.setBackground(new java.awt.Color(255, 255, 255));
         jTxfApellido.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jTxfApellido.setForeground(new java.awt.Color(0, 0, 0));
         jTxfApellido.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTxfApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,9 +104,7 @@ public class Interfaz_Editar extends javax.swing.JFrame {
             }
         });
 
-        jTxfDireccion.setBackground(new java.awt.Color(255, 255, 255));
         jTxfDireccion.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jTxfDireccion.setForeground(new java.awt.Color(0, 0, 0));
         jTxfDireccion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTxfDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,9 +112,7 @@ public class Interfaz_Editar extends javax.swing.JFrame {
             }
         });
 
-        jTxfTelefono.setBackground(new java.awt.Color(255, 255, 255));
         jTxfTelefono.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jTxfTelefono.setForeground(new java.awt.Color(0, 0, 0));
         jTxfTelefono.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTxfTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,14 +120,12 @@ public class Interfaz_Editar extends javax.swing.JFrame {
             }
         });
 
+
         jBtnCancelar.setBackground(new java.awt.Color(255, 255, 255));
         jBtnCancelar.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
-        jBtnCancelar.setForeground(new java.awt.Color(0, 0, 0));
         jBtnCancelar.setText("Cancelar");
 
-        jBtnGuardar.setBackground(new java.awt.Color(255, 255, 255));
         jBtnGuardar.setFont(new java.awt.Font("Segoe UI Black", 0, 15)); // NOI18N
-        jBtnGuardar.setForeground(new java.awt.Color(0, 0, 0));
         jBtnGuardar.setText("Guardar");
 
         jTxfCedula.setBackground(new java.awt.Color(255, 255, 255));
@@ -175,6 +164,12 @@ public class Interfaz_Editar extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jTxfApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTxfNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(34, 34, 34)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTxfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                                             .addComponent(jTxfNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jTxfCedula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -189,6 +184,9 @@ public class Interfaz_Editar extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -280,7 +278,7 @@ public class Interfaz_Editar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jBtnCancelar;
     public javax.swing.JButton jBtnGuardar;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

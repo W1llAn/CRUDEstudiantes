@@ -41,8 +41,11 @@ public class ControlerInterfaz implements ActionListener {
 
     // Método para llenar la tabla de estudiantes
     private void llenarTabla() {
+        ArrayList<Estudiante> estudiantes = this.api.obtenerEstudiantes("http://localhost:8087/SOAP/controllers/apiRest.php");
+
         ArrayList<Estudiante> estudiantes = this.api.obtenerEstudiantes("http://localhost/SOA/Controllers/apiRest.php");
         DefaultTableModel modeloTable = (DefaultTableModel) this.vista.jtblEstudiantes.getModel();
+        modeloTable.setRowCount(0);
         for (Estudiante estudiante : estudiantes) {
             modeloTable.addRow(new Object[]{estudiante.getCedula(), estudiante.getNombre(), estudiante.getApellido(), estudiante.getDireccion(), estudiante.getNumeroCelular()});
         }
@@ -50,6 +53,33 @@ public class ControlerInterfaz implements ActionListener {
     }
 
     private void editarAlumno(int indice) {
+        ArrayList<Estudiante> estudiantes = this.api.obtenerEstudiantes("http://localhost:8087/SOAP/controllers/apiRest.php");
+        String cedula = estudiantes.get(indice).getCedula();
+        this.editar.jTxfCedula.setEnabled(false);
+        this.editar.jTxfCedula.setText(cedula);
+    }
+
+    private void crearAlumno() {
+        String cedula = editar.jTxfCedula.getText();
+        String nombre = editar.jTxfNombre.getText();
+        String apellido = editar.jTxfApellido.getText();
+        String direccion = editar.jTxfDireccion.getText();
+        String numeroCelular = editar.jTxfTelefono.getText();
+
+        Estudiante nuevoEstudiante = new Estudiante(cedula, nombre, apellido, direccion, numeroCelular);
+
+        boolean exito = api.crearUsuario("http://localhost:8087/SOAP/controllers/apiRest.php", nuevoEstudiante);
+
+        if (exito) {
+            
+            llenarTabla();
+            JOptionPane.showMessageDialog(null, "Usuario creado con éxito");
+            this.editar.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al crear el usuario");
+        }
+
+
         String urlServicio = "http://localhost/SOA/Controllers/apiRest.php";
         ArrayList<Estudiante> estudiantes = this.api.obtenerEstudiantes(urlServicio);
         Estudiante estudiante = estudiantes.get(indice);
@@ -89,6 +119,16 @@ public class ControlerInterfaz implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // Lógica para crear un nuevo estudiante
         if (e.getSource() == vista.jbtnCrearUsuario) {
+
+            this.editar.jLabel1.setText("Crear Usuario");
+            this.editar.jTxfCedula.setEnabled(true);
+            this.editar.jTxfCedula.setText("");
+            this.editar.jTxfNombre.setText("");
+            this.editar.jTxfApellido.setText("");
+            this.editar.jTxfDireccion.setText("");
+            this.editar.jTxfTelefono.setText("");
+
+            this.editar.setVisible(true);
             // Implementar la lógica de crear estudiante aquí
         }
 
@@ -100,6 +140,8 @@ public class ControlerInterfaz implements ActionListener {
                 int indice = this.vista.jtblEstudiantes.getSelectedRow();
                 editarAlumno(indice);
             } else {
+                JOptionPane.showMessageDialog(null, "Seleccione al usuario a editar ");
+
                 JOptionPane.showMessageDialog(null, "Seleccione al usuario a editar.");
             }
         }
@@ -126,6 +168,13 @@ public class ControlerInterfaz implements ActionListener {
 
         // Guardar cambios en un estudiante
         if (e.getSource() == editar.jBtnGuardar) {
+            if (editar.jLabel1.getText().equals("Crear Usuario")) {
+                crearAlumno();
+            }else{
+                //Aqui agregar codigo para editar el estudiante :)
+            }
+        }
+
             DefaultTableModel modeloTable = (DefaultTableModel) this.vista.jtblEstudiantes.getModel();
             String urlServicio = "http://localhost/SOA/Controllers/apiRest.php";
             Estudiante estudiante = new Estudiante();
