@@ -250,7 +250,10 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="java.awt.TextField" name="textField1">
+        <Component class="java.awt.TextField" name="textCedula">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="40" y="130" width="220" height="30"/>
